@@ -6,4 +6,4 @@ This is the catalogue of standard geometries created in the Geoblocks project, a
 3. Stratiform salt
 4. Steep salt
 
-The structure of the catalogue is chosen according to the systematizations outlined in Carl et al., 2023a and might be subject to change.
+The structure of the catalogue is chosen according to the systematizations outlined in Carl et al., 2023a. Therefore, the categorization differs from the systematics applied by the BGE. This might be subject to change.

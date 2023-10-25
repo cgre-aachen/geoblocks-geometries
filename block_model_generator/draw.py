@@ -20,7 +20,7 @@ drawing = False
 points = []  # List to store points of the curve
 
 # Set the frame rate (frames per second)
-FPS = 60
+FPS = 30
 clock = pygame.time.Clock()
 
 # Main game loop

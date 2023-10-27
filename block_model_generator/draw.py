@@ -6,10 +6,10 @@ import json
 pygame.init()
 
 # Set up display
-width, height = 800, 600
+width, height = 810, 610
 window_size = (width, height)
 window = pygame.display.set_mode(window_size)
-pygame.display.set_caption("Continuous Curve Drawer")
+pygame.display.set_caption("Please draw you layer")
 
 # Colors
 WHITE = (255, 255, 255)
@@ -20,7 +20,7 @@ drawing = False
 points = []  # List to store points of the curve
 
 # Set the frame rate (frames per second)
-FPS = 30
+FPS = 15
 clock = pygame.time.Clock()
 
 # Main game loop
@@ -48,8 +48,28 @@ while True:
         if points:  # Ensure there is at least one segment
             points[-1].append((x, y))  # Add points to the last segment of the curve
 
-    # Draw the curve
     window.fill(WHITE)
+    # Draw grid lines
+    GRID_SIZE = 40  # Size of each grid cell
+    TICK_SIZE = 10  # Size of the ticks on the axes
+    LABEL_FONT = pygame.font.Font(None, 24)  # Font for the tick labels
+
+    for x in range(0, width, GRID_SIZE):
+        pygame.draw.line(window, BLACK, (x, 0), (x, height))
+        if x % (GRID_SIZE * 5) == 0:  # Draw longer tick marks at every 5 grid cells
+            pygame.draw.line(window, BLACK, (x, -TICK_SIZE), (x, TICK_SIZE))
+            label = LABEL_FONT.render(str(x), True, BLACK)  # Create label text
+            window.blit(label, (x - label.get_width() // 2, TICK_SIZE))
+
+    for y in range(0, height, GRID_SIZE):
+        pygame.draw.line(window, BLACK, (0, y), (width, y))
+        if y % (GRID_SIZE * 5) == 0:  # Draw longer tick marks at every 5 grid cells
+            pygame.draw.line(window, BLACK, (-TICK_SIZE, y), (TICK_SIZE, y))
+            label = LABEL_FONT.render(str(y), True, BLACK)  # Create label text
+            window.blit(label, (TICK_SIZE, y - label.get_height() // 2))
+
+
+    # Draw the curve
     for segment in points:
         if len(segment) > 1:
             pygame.draw.lines(window, BLACK, False, segment, 2)

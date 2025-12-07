@@ -58,3 +58,25 @@ Each geometry notebook follows a similar pattern:
 5. Compute and visualize the final model
 
 When modifying geometries, work with the slider values to adjust control points rather than hardcoding coordinates.
+
+## Important: Use Shared Modules Instead of Duplicated Code
+
+⚠️ **Security Notice**: Some older notebooks may contain `%run` magic commands which are security vulnerabilities. Use proper imports instead.
+
+**DO NOT USE:**
+```python
+%run draw.py  # SECURITY RISK - executes arbitrary external code
+```
+
+**USE INSTEAD:**
+```python
+from shared.drawing import run_drawing_interface
+from shared.geological import create_nurbs_curve, SaltFormation
+```
+
+### Shared Modules Available
+
+- **`shared.drawing`**: Interactive drawing interface (replaces duplicate draw.py files)
+- **`shared.geological`**: NURBS curve generation and geological formation classes
+
+See `MIGRATION_GUIDE.md` and `examples/using_shared_modules.ipynb` for detailed migration instructions.

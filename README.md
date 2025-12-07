@@ -36,34 +36,107 @@ geoblocks-geometries/
 
 ## 🚀 **Installation**
 
-### Option 1: Using pip
+### Option 1: Using conda (Recommended)
 
 ```bash
 # Clone the repository
 git clone https://github.com/your-org/geoblocks-geometries.git
 cd geoblocks-geometries
+
+# Create conda environment (this installs most dependencies)
+conda env create -f environment.yml
+conda activate geoblocks
+
+# Verify installation
+python -c "import shared.geological; print('✅ Installation successful!')"
+```
+
+### Option 2: Using pip
+
+```bash
+# Clone the repository
+git clone https://github.com/your-org/geoblocks-geometries.git
+cd geoblocks-geometries
+
+# Create virtual environment (recommended)
+python -m venv geoblocks-env
+source geoblocks-env/bin/activate  # On Windows: geoblocks-env\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
+
+# Verify installation
+python -c "import shared.geological; print('✅ Installation successful!')"
 ```
 
-### Option 2: Using conda (Recommended)
+### Option 3: Manual Installation
+
+If you encounter issues with the environment files:
 
 ```bash
-# Clone the repository
-git clone https://github.com/your-org/geoblocks-geometries.git
-cd geoblocks-geometries
+# Install core dependencies first
+conda install -c conda-forge numpy scipy pandas matplotlib plotly jupyter
 
-# Create conda environment
-conda env create -f environment.yml
-conda activate geoblocks
+# Install specialized packages via pip
+pip install gempy>=2.3.0 geomdl>=5.3.0 pykrige>=1.6.0 pyvista>=0.36.0
+
+# Install GUI packages
+conda install -c conda-forge pyqt pygame ipywidgets
 ```
+
+### 🔧 **Troubleshooting Installation**
+
+**Common Issues:**
+
+1. **GemPy Installation Problems:**
+   ```bash
+   # Try installing with specific channels
+   pip install gempy --no-deps
+   pip install theano-pymc aesara
+   ```
+
+2. **geomdl Not Found:**
+   ```bash
+   # geomdl is only available via pip
+   pip install geomdl>=5.3.0
+   ```
+
+3. **PyQt5 Issues on macOS:**
+   ```bash
+   # Use conda for PyQt5 on macOS
+   conda install -c conda-forge pyqt
+   ```
+
+4. **VTK/PyVista Display Issues:**
+   ```bash
+   # For headless systems or display issues
+   export PYVISTA_OFF_SCREEN=true
+   ```
 
 ### System Dependencies
 
 Some features may require additional system-level dependencies:
 - **GDAL/OGR** for advanced geospatial data handling
 - **VTK** for 3D visualization (usually installed with PyVista)
+- **System display drivers** for interactive drawing interface
+
+### 📋 **Verify Installation**
+
+Test that everything works correctly:
+
+```python
+# Test basic imports
+from shared.geological import create_nurbs_curve, SaltFormation
+from shared.drawing import DrawingInterface
+
+# Test NURBS generation
+curve_points, angles = create_nurbs_curve(
+    0, 20, 3, 17, 7, 13, 10,  # x coordinates
+    5, 5, 8, 8, 12, 12, 15,   # y coordinates
+    nr_points=20, fig=False
+)
+print(f"✅ Generated {len(curve_points)} curve points")
+```
 
 ## 📖 **Quick Start**
 

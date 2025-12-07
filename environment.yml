@@ -15,12 +15,6 @@ dependencies:
   - scipy>=1.8.0
   - pandas>=1.4.0
   
-  # Geological modeling
-  - gempy>=2.3.0
-  
-  # NURBS and geometric modeling  
-  - geomdl>=5.3.0
-  
   # Visualization and plotting
   - matplotlib>=3.5.0
   - plotly>=5.10.0
@@ -35,7 +29,7 @@ dependencies:
   - pygame>=2.1.0
   
   # Spatial analysis
-  - pykrige>=1.6.0
+  - scikit-learn>=1.0.0
   
   # Jupyter ecosystem
   - jupyter>=1.0.0
@@ -55,3 +49,10 @@ dependencies:
   # System dependencies that may be needed
   - vtk  # For PyVista 3D visualization
   - gdal  # For geospatial data (optional)
+  
+  # Packages that must be installed via pip
+  - pip
+  - pip:
+    - gempy>=2.3.0         # Not available in conda-forge
+    - geomdl>=5.3.0        # Not available in conda-forge  
+    - pykrige>=1.6.0       # Better to install via pip

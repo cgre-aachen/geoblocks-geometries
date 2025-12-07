@@ -1,0 +1,28 @@
+# Minimal conda environment for GeoBlocks (faster installation)
+# Use: conda env create -f environment-minimal.yml
+
+name: geoblocks-minimal
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python>=3.8
+  - numpy
+  - scipy  
+  - pandas
+  - matplotlib
+  - jupyter
+  - ipywidgets
+  - notebook
+  - pip
+  
+  # Install specialized packages via pip after conda environment creation
+  - pip:
+    - plotly>=5.10.0
+    - gempy>=2.3.0
+    - geomdl>=5.3.0
+    - pyvista>=0.36.0
+    - pygame>=2.1.0
+    - PyQt5>=5.15.0

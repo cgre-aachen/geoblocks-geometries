@@ -1,5 +1,47 @@
-shared/__pycache__/__init__.cpython-313.pyc
-shared/geological/__pycache__/formations.cpython-313.pyc
-shared/geological/__pycache__/nurbs.cpython-313.pyc
-shared/drawing/__pycache__/draw_interface.cpython-313.pyc
-shared/geological/__pycache__/__init__.cpython-313.pyc
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+CONVERSATION_STATE.md
+curve_points.json
